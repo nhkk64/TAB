@@ -1,19 +1,18 @@
 services:
   - type: worker
     name: twitch-discord-bot
-    runtime: python
-    repo: https://github.com/yourusername/twitch-discord-bot
-    branch: main
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python twitch_announcer.py"
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python twitch_announcer.py
     envVars:
       - key: DISCORD_BOT_TOKEN
-        value: "your_discord_token"
+        sync: false
       - key: DISCORD_CHANNEL_ID
-        value: "123456789012345678"
+        sync: false
       - key: TWITCH_CLIENT_ID
-        value: "your_twitch_client_id"
+        sync: false
       - key: TWITCH_CLIENT_SECRET
-        value: "your_twitch_client_secret"
+        sync: false
       - key: TWITCH_USERNAME
-        value: "your_twitch_username"
+        sync: false
