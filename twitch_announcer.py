@@ -79,7 +79,7 @@ async def check_stream():
         return
 
     if live and not stream_was_live:
-        await channel.send(f"🚨 **year96** is currently streaming! Check it out: https://twitch.tv/{TWITCH_USERNAME}")
+        await channel.send(f" **year96** is currently streaming! Check it out: https://twitch.tv/{TWITCH_USERNAME}")
         stream_was_live = True
     elif not live and stream_was_live:
         stream_was_live = False
