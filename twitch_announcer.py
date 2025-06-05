@@ -66,3 +66,19 @@ async def check_stream():
         STREAM_LIVE = False
 
 bot.run(TOKEN)
+
+# fake web server to keep Render happy
+from threading import Thread
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+class SimpleHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b'ok')
+
+def run_web():
+    server = HTTPServer(('0.0.0.0', 10000), SimpleHandler)
+    server.serve_forever()
+
+Thread(target=run_web).start()
